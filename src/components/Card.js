@@ -1,18 +1,23 @@
 import React from "react";
-import { FaTrashAlt, FaRegHeart } from "react-icons/fa";
 import "./Card.css";
+import FavouriteButton from './FavouriteButton';
+import DeleteRobotButton from './DeleteRobotButton';
 
 const Card = (props) => {
   const { id, name, email } = props;
 
+  const onFavButtonPress = () => {
+    console.log("fav button pressed ", name);
+  }
+
+  const onDeleteRobotButtonPress = () => {
+    console.log("delete button pressed ", name);
+  }
+
   return (
     <div className="card grow">
-      <button className="btn heart" >
-        <FaRegHeart style={{fontSize: '20px'}}/>
-      </button>
-      <button className="btn trash">
-        <FaTrashAlt style={{fontSize: '20px'}}/>
-      </button>
+      <FavouriteButton favButtonPress={onFavButtonPress} />
+      <DeleteRobotButton deleteRobotButtonPress={onDeleteRobotButtonPress}/>
       <img src={`https://robohash.org/${id}`} alt="Robot" />
       <div className="card-info">
         <h2>{name}</h2>
