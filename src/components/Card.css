@@ -1,0 +1,44 @@
+.card {
+    background-color: lightgreen;
+    padding: 10px;
+    border: 5px;
+    border-radius: 15px;
+    margin: 10px auto;
+    max-width: 300px;
+    box-shadow:  3px 5px rgb(0 0 0 / 0.05);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.grow { 
+    transition: all .2s ease-in-out; 
+}
+    
+.grow:hover {
+    transform: scale(105%);
+    box-shadow:  4px 5px rgb(0 0 0 / 0.1);
+}
+
+
+img {
+    width: 300px;
+    height: 300px;
+}
+
+.btn {
+    position: relative;
+    background-color: rgb(81, 198, 81);
+    padding: 7px 10px;
+    font-size: 15px;
+    border-radius: 15px;
+    margin: auto;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.btn:hover {
+    background-color: rgb(0, 128, 0, 0.7);
+    cursor: pointer;
+}
