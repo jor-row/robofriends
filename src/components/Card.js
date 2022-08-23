@@ -1,4 +1,5 @@
 import React from "react";
+import { FaTrashAlt, FaRegHeart } from "react-icons/fa";
 import "./Card.css";
 
 const Card = (props) => {
@@ -6,8 +7,11 @@ const Card = (props) => {
 
   return (
     <div className="card grow">
-      <button className="btn">
-        <i className="fa fa-trash"></i>
+      <button className="btn heart" >
+        <FaRegHeart style={{fontSize: '20px'}}/>
+      </button>
+      <button className="btn trash">
+        <FaTrashAlt style={{fontSize: '20px'}}/>
       </button>
       <img src={`https://robohash.org/${id}`} alt="Robot" />
       <div className="card-info">

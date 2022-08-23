@@ -34,11 +34,27 @@ img {
     padding: 7px 10px;
     font-size: 15px;
     border-radius: 15px;
-    margin: auto;
-    margin-right: 5px;
-    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .btn:hover {
     background-color: rgb(0, 128, 0, 0.7);
     cursor: pointer;
+}
+
+.trash {
+    margin: auto;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.heart {
+    margin: auto;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.heart:active {
+    color: red;
+    fill: red;
 }
