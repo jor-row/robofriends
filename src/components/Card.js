@@ -1,11 +1,15 @@
-import {React, useState} from "react";
+import {React, useEffect, useState} from "react";
 import "./Card.css";
 import { FaRegHeart } from "react-icons/fa";
 import DeleteRobotButton from './DeleteRobotButton';
 
 const Card = ({ id, name, email , favourites, setFavourites, filteredRobots, setFilteredRobots}) => {
 
-  const [buttonState, setButtonState] = useState("inactive");
+  const [buttonState, setButtonState] = useState("");
+
+  useEffect(() => {
+    favourites.includes(name) ? setButtonState("active") : setButtonState("inactive");
+  }, [favourites, name])
 
   const onFavButtonPress = () => {
     if (!favourites.includes(name)) {
