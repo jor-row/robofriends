@@ -35,7 +35,7 @@ function App() {
       </header>
       <Scroll>
         <ErrorBoundary>
-          <CardList robots={filteredList} />
+          <CardList robots={filteredList} setRobots={setRobots} />
         </ErrorBoundary>
       </Scroll>
     </div>

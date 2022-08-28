@@ -1,22 +1,43 @@
-import React from "react";
+import {React, useState} from "react";
 import "./Card.css";
-import FavouriteButton from './FavouriteButton';
+import { FaRegHeart } from "react-icons/fa";
 import DeleteRobotButton from './DeleteRobotButton';
 
-const Card = (props) => {
-  const { id, name, email } = props;
+const Card = ({ id, name, email , favourites, setFavourites, filteredRobots, setFilteredRobots}) => {
+
+  const [buttonState, setButtonState] = useState("inactive");
 
   const onFavButtonPress = () => {
-    console.log("fav button pressed ", name);
+    if (!favourites.includes(name)) {
+      setFavourites([...favourites, name])
+      setButtonState("active")
+    } else {
+      const newFavourites = favourites.filter((robotName) => robotName !== name)
+      setFavourites(newFavourites)
+      setButtonState("inactive")
+    }
   }
 
   const onDeleteRobotButtonPress = () => {
     console.log("delete button pressed ", name);
+    if (favourites.includes(name)) {
+      const newFavourites = favourites.filter((robot) => robot !== name)
+      setFavourites(newFavourites)
+      setButtonState("inactive")
+    }
+    const newFilteredRobots = filteredRobots.filter((robot) => robot.name !== name)
+    setFilteredRobots(newFilteredRobots);
   }
 
   return (
     <div className="card grow">
-      <FavouriteButton favButtonPress={onFavButtonPress} />
+      <button 
+        className="btn heart" 
+        onClick={onFavButtonPress}
+        style={{ color: buttonState === "inactive" ? "#330033" : "#F00" }}
+        >
+        <FaRegHeart style={{fontSize: '20px'}}/>
+      </button>
       <DeleteRobotButton deleteRobotButtonPress={onDeleteRobotButtonPress}/>
       <img src={`https://robohash.org/${id}`} alt="Robot" />
       <div className="card-info">
