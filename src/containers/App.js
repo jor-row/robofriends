@@ -8,6 +8,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 function App() {
   const [robots, setRobots] = useState([]);
   const [searchField, setSearchField] = useState("");
+  // const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -34,7 +35,7 @@ function App() {
       </header>
       <Scroll>
         <ErrorBoundary>
-          <CardList robots={filteredList} />
+          <CardList robots={filteredList} setRobots={setRobots} />
         </ErrorBoundary>
       </Scroll>
     </div>
