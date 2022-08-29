@@ -3,34 +3,35 @@ import "./Card.css";
 import { FaRegHeart } from "react-icons/fa";
 import DeleteRobotButton from './DeleteRobotButton';
 
-const Card = ({ id, name, email , favourites, setFavourites, filteredRobots, setFilteredRobots}) => {
+const Card = ({ robot , robots, setRobots, favourites, setFavourites, filteredRobots, setFilteredRobots}) => {
 
   const [buttonState, setButtonState] = useState("");
 
   useEffect(() => {
-    favourites.includes(name) ? setButtonState("active") : setButtonState("inactive");
-  }, [favourites, name])
+    favourites.includes(robot) ? setButtonState("active") : setButtonState("inactive");
+  }, [favourites, robot])
 
   const onFavButtonPress = () => {
-    if (!favourites.includes(name)) {
-      setFavourites([...favourites, name])
+    if (!favourites.includes(robot)) {
+      setFavourites([...favourites, robot])
       setButtonState("active")
     } else {
-      const newFavourites = favourites.filter((robotName) => robotName !== name)
+      const newFavourites = favourites.filter((robotName) => robotName !== robot)
       setFavourites(newFavourites)
       setButtonState("inactive")
     }
   }
 
   const onDeleteRobotButtonPress = () => {
-    console.log("delete button pressed ", name);
-    if (favourites.includes(name)) {
-      const newFavourites = favourites.filter((robot) => robot !== name)
+    console.log("delete button pressed ", robot);
+    if (favourites.includes(robot)) {
+      const newFavourites = favourites.filter((favrobot) => favrobot !== robot)
       setFavourites(newFavourites)
       setButtonState("inactive")
     }
-    const newFilteredRobots = filteredRobots.filter((robot) => robot.name !== name)
-    setFilteredRobots(newFilteredRobots);
+    const newRobots = filteredRobots.filter((existingRobot) => existingRobot !== robot)
+    setRobots(newRobots);
+
   }
 
   return (
@@ -43,10 +44,10 @@ const Card = ({ id, name, email , favourites, setFavourites, filteredRobots, set
         <FaRegHeart style={{fontSize: '20px'}}/>
       </button>
       <DeleteRobotButton deleteRobotButtonPress={onDeleteRobotButtonPress}/>
-      <img src={`https://robohash.org/${id}`} alt="Robot" />
+      <img src={`https://robohash.org/${robot.id}`} alt="Robot" />
       <div className="card-info">
-        <h2>{name}</h2>
-        <p>{email}</p>
+        <h2>{robot.name}</h2>
+        <p>{robot.email}</p>
       </div>
     </div>
   );

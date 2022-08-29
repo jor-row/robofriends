@@ -12,18 +12,17 @@ const CardList = ({ robots, setRobots }) => {
 
   useEffect(() => {
     console.log("Filtered => ", filteredRobots)
-    setRobots(filteredRobots)
-  }, [filteredRobots, setRobots]);
+    setFilteredRobots(robots)
+  }, [filteredRobots, robots]);
 
 
-  const listOfRobots = robots.map((robot, i) => {
-    const { id, name, email } = robot;
+  const listOfRobots = filteredRobots.map((robot) => {
 
     return <Card 
-              id={id}
-              name={name} 
-              email={email} 
-              key={id} 
+              robot={robot}
+              key={robot.id} 
+              robots={robots}
+              setRobots={setRobots}
               favourites={favourites} 
               setFavourites={setFavourites} 
               filteredRobots={filteredRobots}

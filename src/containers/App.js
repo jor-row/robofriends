@@ -9,6 +9,7 @@ function App() {
   const [robots, setRobots] = useState([]);
   const [searchField, setSearchField] = useState("");
   // const [favourites, setFavourites] = useState([]);
+  const [count, setCount] = useState(20);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -21,6 +22,18 @@ function App() {
     console.log(event.target.value);
   };
 
+  const handleAddRobot = () => {
+    const newRobot = {
+      name: "Jordan Rowan",
+      email: "jorowan@cisco.com",
+      key: `${count + 1}`,
+      id: `${count + 1}`,
+    }
+    setRobots([...robots, newRobot])
+    console.log("robots after add => ", robots)
+    setCount(count+1)
+  }
+
   const filteredList = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(searchField.toLowerCase());
   });
@@ -32,6 +45,7 @@ function App() {
       <header>
         <h1>RoboFriends</h1>
         <SearchBox searchChange={onSearchChange} />
+        <button onClick={handleAddRobot}> Add </button>
       </header>
       <Scroll>
         <ErrorBoundary>
