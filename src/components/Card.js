@@ -12,6 +12,7 @@ const Card = ({ robot , robots, setRobots, favourites, setFavourites, filteredRo
   }, [favourites, robot])
 
   const onFavButtonPress = () => {
+    console.log("favourite button pressed on ", robot);
     if (!favourites.includes(robot)) {
       setFavourites([...favourites, robot])
       setButtonState("active")
